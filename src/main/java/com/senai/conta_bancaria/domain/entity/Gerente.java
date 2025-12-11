@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name="gerentes")
+@Table(name="gerente")
 public class Gerente extends Usuario{
 
 }

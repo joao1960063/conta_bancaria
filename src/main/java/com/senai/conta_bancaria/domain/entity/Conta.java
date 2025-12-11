@@ -10,16 +10,16 @@ import lombok.experimental.SuperBuilder;
 import java.math.BigDecimal;
 
 @Entity
+@Data
+@SuperBuilder
+@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_conta", discriminatorType = DiscriminatorType.STRING, length = 20)
 @Table(name = "contaDTO",
         uniqueConstraints =  {
-            @UniqueConstraint(name = "uk_conta_numero", columnNames = "numero"),
-            @UniqueConstraint(name = "uk_cliente_tipo", columnNames = {"cliente_id", "tipo_conta"})
+                @UniqueConstraint(name = "uk_conta_numero", columnNames = "numero"),
+                @UniqueConstraint(name = "uk_cliente_tipo", columnNames = {"cliente_id", "tipo_conta"})
         })
-@Data
-@SuperBuilder
-@NoArgsConstructor
 public abstract class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
